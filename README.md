@@ -1,12 +1,15 @@
 # Line-Follower-Robot
-This is a Microprocessor final project :smiley:'
+This is a Microprocessor final project :smiley:' Some of refernces:
+- [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-## Introduction :sleepy:
+## 0.Introduction :sleepy:
 
-## NNN
+## 1.NNN
 
-### Functional and Non-Funtional requirements
+### 1.1 Functional and Non-Funtional requirements
 
-### System Diagram
+### 1.2 System Diagram
+
+![alt text](https://github.com/manhph2211/Line-Follower-Robot/blob/main/Diagram.png)
 
 
