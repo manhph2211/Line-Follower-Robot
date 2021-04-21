@@ -1,5 +1,5 @@
 # Line-Follower-Robot
-Some of refernces:
+Some of references:
 - [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ## 0.Introduction :sleepy:
