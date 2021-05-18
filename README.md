@@ -11,6 +11,5 @@ This is a Microprocessor final project and our team is team 2 including Binh, Hu
 
 ### 1.2 System Diagram
 
-![alt text](https://github.com/manhph2211/Line-Follower-Robot/blob/main/Diagram.png)
 
 
