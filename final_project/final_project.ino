@@ -46,39 +46,19 @@ Blynk.begin(auth, ssid, pass);
 }
 
 
-int convert(int x){
-    if (x>512) 
-        x = 1;
-    else x = 0;
-    return x;
-}
-
-
-int check(int a,int b)
-{   
-    a = convert(a);
-    b = convert(b);
-   if(a==1||b==1)
-      return 0;
-   else
-      return 1; 
-}
-
-
-void sendSensor()
-{
-  
-}
-
-
 void processor()
 {
-     if ( check(analogRead(L1_S),analogRead(L2_S)) && check(analogRead(R1_S),analogRead(R2_S)) && convert(analogRead(C_S)) == 1)
+  int s1 = digitalRead(L1_S);  //Left Most Sensor
+  int s2 = digitalRead(L2_S);  //Left Sensor
+  int s3 = digitalRead(C_S);  //Middle Sensor
+  int s4 = digitalRead(R1_S);  //Right Sensor
+  int s5 = digitalRead(R2_S);  //Right Most Sensor
+  
+   if((s1 == 1) && (s2 == 1) && (s3 == 0) && (s4 == 1) && (s5 == 1))
    {
-///
    forward(motor1, motor2, 150);
    delay(1000);
-//   }
+   }
 
    back(motor1, motor2, -150);
    delay(1000);
