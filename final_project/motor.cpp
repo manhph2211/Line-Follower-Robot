@@ -20,7 +20,7 @@ Developed with ROB-9457
 
 #include "motor.h"
 #include <Arduino.h>
-
+#define analogWrite ledcWrite
 Motor::Motor(int In1pin, int In2pin, int PWMpin, int offset, int STBYpin)
 {
   In1 = In1pin;
