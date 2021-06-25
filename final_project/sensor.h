@@ -6,10 +6,12 @@ class sensor{
         int numOfSens;
         double* thresholds;
         int* sensorValues;
+        int* outputs;
         int* pins;
     public:
-        sensor(int, double*, double*, int*);
+        sensor(int, double*, int*);
         void calib();
         void read();  
+        void encode();
 };
 #endif
