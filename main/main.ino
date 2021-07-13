@@ -4,25 +4,23 @@
 #include <BlynkSimpleEsp32.h>
 #include "SimpleTimer.h"
 
-#define AIN1 21
-#define AIN2 5
+#define AIN1 16
+#define AIN2 17
 
-#define BIN1 18
-#define BIN2 17
+#define BIN1 5
+#define BIN2 18
 
-#define enA 16
-#define enB 22
-// 34 35 36 39 input
-// 0 2 4 5 12 15 avoid using
+#define enA 4
+#define enB 19
 
-#define clp 32
-#define near 35
+#define clp 35
+#define near 34
 
-#define L1_S 23 //S1
-#define L2_S 25 // S2
-#define R1_S 26 //S4
-#define R2_S 27 // S5
-#define C_S 14 // S3
+#define L1_S 27 //S1
+#define L2_S 26 // S2
+#define R1_S 23 //S4
+#define R2_S 32 // S5
+#define C_S 25 // S3
 
 //#define BLYNK_PRINT Serial
 
