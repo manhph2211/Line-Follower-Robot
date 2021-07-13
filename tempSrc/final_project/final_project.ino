@@ -1,8 +1,5 @@
 #include "motor.h"
-#include <WiFi.h>
-#include <WiFiClient.h>
-#include <BlynkSimpleEsp32.h>
-#include "SimpleTimer.h"
+
 
 
 #define AIN1 2
@@ -22,13 +19,8 @@
 const int offsetA = 1;
 const int offsetB = 1;
 int dem = 0;
-SimpleTimer timer;
-char auth[] = ""; 
 
-// Your WiFi credentials.
-// Set password to "" for open networks.
-char ssid[] = "";  //Enter your WIFI Name
-char pass[] = "";  //Enter your WIFI Password
+
 
 Motor motor1 = Motor(AIN1, AIN2, PWMA, offsetA, STBY);
 Motor motor2 = Motor(BIN1, BIN2, PWMB, offsetB, STBY);
@@ -41,7 +33,7 @@ pinMode(C_S,  INPUT);
 pinMode(R1_S, INPUT);
 pinMode(R2_S, INPUT);
 Serial.begin(9600);
-Blynk.begin(auth, ssid, pass);
+
 
 }
 
@@ -65,10 +57,6 @@ int check(int a,int b)
 }
 
 
-void sendSensor()
-{
-  
-}
 
 
 void processor()
@@ -109,8 +97,5 @@ void processor()
 
 void loop()
 {
-
-  Blynk.run(); // Initiates Blynk
-  timer.run(); // Initiates SimpleTimer
   
 }
