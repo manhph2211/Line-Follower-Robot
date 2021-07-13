@@ -4,44 +4,43 @@
 #include <BlynkSimpleEsp32.h>
 #include "SimpleTimer.h"
 
-#define AIN1 5
-#define BIN1 18
+#define AIN1 21
+#define AIN2 5
 
-#define AIN2 21
+#define BIN1 18
 #define BIN2 17
 
-#define enA 23
+#define enA 16
 #define enB 22
+// 34 35 36 39 input
+// 0 2 4 5 12 15 avoid using
 
 #define clp 32
 #define near 35
 
-#define L1_S 23
-#define L2_S 25
-#define R1_S 26
-#define R2_S 27
-#define C_S 14
+#define L1_S 23 //S1
+#define L2_S 25 // S2
+#define R1_S 26 //S4
+#define R2_S 27 // S5
+#define C_S 14 // S3
+
+//#define BLYNK_PRINT Serial
 
 const int offsetA = 1;
 const int offsetB = 1;
 
 int count = 0;
-int speed = 254;
+int speed = 100;
 
+//BlynkTimer timer;
 SimpleTimer timer;
 
-char auth[] = ""; 
-char ssid[] = "TANG 2";  //Enter your WIFI Name
-char pass[] = "123456a@";  //Enter your WIFI Password
+char auth[] = "2V_OEwpvftBfHdhCiHoQvc1nRV4nDuW6"; 
+char ssid[] = "chotroihn.vn";  //Enter your WIFI Name
+char pass[] = "chotroihn.vn@";  //Enter your WIFI Password
 
 Motor motor1 = Motor(AIN1, AIN2, enA, offsetA);
 Motor motor2 = Motor(BIN1, BIN2, enB, offsetB);
-
-
-BLYNK_WRITE(V1)
-{
-	speed = param.asFloat(); 
-}
 
 
 void processor()
@@ -51,33 +50,45 @@ void processor()
     int s3 = digitalRead(C_S);  //Middle Sensor
     int s4 = digitalRead(R1_S);  //Right Sensor
     int s5 = digitalRead(R2_S);  //Right Most Sensor
-    Serial.println(s3);
-    if((s1 == 0) && (s2 == 0) && (s3 == 0) && (s4 == 0) && (s5 == 0))
+//    Serial.println("S1 = ");
+//    Serial.println(s1);
+//    Serial.println("S2 = ");
+//    Serial.println(s2);
+//    Serial.println("S3 = ");
+//    Serial.println(s3);
+//    Serial.println("S4 = ");
+//    Serial.println(s4);
+//    Serial.println("S5 = ");
+//    Serial.println(s5);
+    Serial.println("--------------------------------");
+    if((s2 == 1) && (s3 == 0) && (s4 == 1) && (s5 == 1))
     {
     Serial.println ("Moving Forward...");
     forward(motor1, motor2, speed);
     }
-    if((s1 == 0) && (s2 == 0) && (s3 == 1) && (s4 == 0) && (s5 == 0))
-    {
-    Serial.println ("Moving Forward...");
-    forward(motor1, motor2, speed);
-    }
-    else if ((s1 == 1) || (s2 == 1) && (s4 == 0) && (s5 == 0))
+    else if ((s2 == 0) && (s4 == 1) && (s5 == 1))
     {
     Serial.println ("Turing Left...");
     left(motor1, motor2, speed);
     }
-    else if ((s1 == 0) && (s2 == 0) && ((s4 == 1) || (s5 == 1)))
+    else if ((s2 == 1) && ((s4 == 0) || (s5 == 0)))
     {
     Serial.println ("Turning right...");
     right(motor1, motor2, speed);
     }
-    else if (((s1 == 1) || (s2 == 1)) && (s3 == 1) && ((s4 == 1) || (s5 == 1)))
+    else if (( ((s2 == 0) || (s3 == 0)) && ((s4 == 0) || (s5 == 0)) )) 
     {
     Serial.println ("Stop...");
     count += 1;
     brake(motor1, motor2);  
     }   
+}
+
+
+BLYNK_WRITE(V1)
+{
+  speed = param.asInt(); 
+  Serial.println(speed);
 }
 
 
@@ -91,15 +102,23 @@ void setup()
   pinMode(near,INPUT);
   pinMode(clp,INPUT);
 	Serial.begin(9600);
-//	Blynk.begin(auth, /ssid, pass);
-	timer.setInterval(1000L, processor);
+  Blynk.begin(auth, ssid, pass);
+	timer.setInterval(10L, processor);
 }
 
 
 void loop()
 {
-//    fo/rward(motor1, motor2, speed);
-    delay(1000);
-//  Blynk.run(); /
-  	timer.run();
+    Serial.println("Hello my friends!!!");
+    if ( !Blynk.connected() )
+    {
+    Serial.println("wait wat?");
+    }
+    if(WiFi.status())
+    {
+      Serial.println("Oki");
+    }
+    Serial.println ("...");
+    Blynk.run();
+    timer.run();
 }
