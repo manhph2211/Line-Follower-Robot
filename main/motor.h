@@ -2,7 +2,6 @@
 #define SPARKFUN_TB6612_h
 #include <Arduino.h>
 #define analogWrite ledcWrite
-//used in some functions so you don't have to send a speed
 #define DEFAULTSPEED 255  
 
 

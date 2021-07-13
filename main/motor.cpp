@@ -1,15 +1,10 @@
 #include "motor.h"
 #include <Arduino.h>
-#define analogWrite ledcWrite
+//#define analogWrite ledcWrite
 
 
-Motor::Motor(int In1pin, int In2pin, int PWMpin, int offset)
+Motor::Motor(int In1, int In2, int PWM, int offset)
 {
-  In1 = In1pin;
-  In2 = In2pin;
-  PWM = PWMpin;
-  Offset = offset;
-  
   pinMode(In1, OUTPUT);
   pinMode(In2, OUTPUT);
   pinMode(PWM, OUTPUT);
@@ -28,6 +23,7 @@ void Motor::fwd(int speed)
 {
    digitalWrite(In1, HIGH);
    digitalWrite(In2, LOW);
+   digitalWrite(PWM,HIGH);
    analogWrite(PWM, speed);
 }
 
@@ -36,6 +32,7 @@ void Motor::rev(int speed)
 {
    digitalWrite(In1, LOW);
    digitalWrite(In2, HIGH);
+   digitalWrite(PWM,HIGH);
    analogWrite(PWM, speed);
 }
 
@@ -44,9 +41,9 @@ void Motor::brake()
 {
    digitalWrite(In1, HIGH);
    digitalWrite(In2, HIGH);
-   analogWrite(PWM,0);
+   //analogWrite(PWM,0);
 }
-
+ 
 
 void forward(Motor motor1, Motor motor2, int speed)
 {
@@ -91,7 +88,6 @@ void right(Motor left, Motor right, int speed)
 	int temp = abs(speed)/2;
 	left.drive(temp);
 	right.drive(-temp);
-	
 }
 
 
