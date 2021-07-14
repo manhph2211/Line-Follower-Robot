@@ -1,7 +1,7 @@
-#ifndef SPARKFUN_TB6612_h
-#define SPARKFUN_TB6612_h
 #include <Arduino.h>
-#define analogWrite ledcWrite
+
+#ifndef L298
+#define L298
 #define DEFAULTSPEED 255  
 
 
@@ -9,12 +9,12 @@ class Motor
 {
   public:
 
-    Motor(int In1pin, int In2pin, int PWMpin, int offset);      
+    Motor(int, int, int);      
     void drive(int speed);  
     void brake(); 
 	
   private:
-	int In1, In2, PWM, Offset;
+	int In1, In2, PWM;
 	void fwd(int speed);
 	void rev(int speed);
 };
