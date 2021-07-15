@@ -23,8 +23,8 @@
 #define C 25 // S3
 
 char auth[] = "KOLz6MhYtf3-HApAMiDnevnkRJyGgNLy"; 
-char ssid[] = "Thanh Dat(5G)";  //Enter your WIFI Name
-char pass[] = "hm22112000";  //Enter your WIFI Password
+char ssid[] = "vivo vo ve";  //Enter your WIFI Name
+char pass[] = "huedang1708";  //Enter your WIFI Password
 
 SimpleTimer timer;
 
@@ -35,7 +35,7 @@ byte state = 1;// 0 : Stop , 1 : Forward, 2 : Right, 3 : Left
 int count = 0;
 int dutyCycle = 150;
 int step_n = 3 ;
-/*
+
 BLYNK_WRITE(V1)
 {
   dutyCycle = param.asInt(); 
@@ -47,7 +47,7 @@ BLYNK_WRITE(V2)
   step_n = param.asInt(); 
   Serial.println(step_n);
 }
-*/
+
 void processor(){
     if(!digitalRead(C))
         state = 1;
@@ -58,7 +58,7 @@ void processor(){
                           else if(!digitalRead(C) & !digitalRead(L2) & !digitalRead(L1) & !digitalRead(R1) & !digitalRead(R2))
                                      {
                                        count += 1;
-                                       if (count == step_n)
+                                       if (count >= step_n)
                                          {    
                                              state = 0; 
                                              Serial.print("Finished");
@@ -97,8 +97,8 @@ void setup() {
   pinMode(near,INPUT);
   pinMode(clp,INPUT);
   Serial.begin(9600);
-  //Blynk.begin(auth, ssid, pass); 
-  timer.setInterval(80L,processor);
+  Blynk.begin(auth, ssid, pass); 
+  timer.setInterval(50L,processor);
 }
 
 void loop() {
@@ -107,6 +107,6 @@ void loop() {
   {
   Serial.println("wait wat?");
   }
-  //Blynk.run();
+  Blynk.run();
   timer.run();
 }
