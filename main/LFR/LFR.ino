@@ -23,7 +23,7 @@
 #define C 25 // S3
 
 char auth[] = "2V_OEwpvftBfHdhCiHoQvc1nRV4nDuW6"; 
-char ssid[] = "Thanh Dat(5G)";  //Enter your WIFI Name
+char ssid[] = "Hung_Manh";  //Enter your WIFI Name
 char pass[] = "hm22112000";  //Enter your WIFI Password
 
 SimpleTimer timer;
@@ -35,7 +35,7 @@ byte state = 1;// 0 : Stop , 1 : Forward, 2 : Right, 3 : Left
 int count = 0;
 int dutyCycle = 200;
 int step_n = 3 ;
-/*
+
 BLYNK_WRITE(V1)
 {
   dutyCycle = param.asInt(); 
@@ -47,46 +47,37 @@ BLYNK_WRITE(V2)
   step_n = param.asInt(); 
   Serial.println(step_n);
 }
-*/
+
 void processor(){
+
     if(!digitalRead(C))
         state = 1;
-      else  if(!digitalRead(R2) | !digitalRead(R1)) 
+      else  if(!digitalRead(L1) & digitalRead(L2)) 
                 state = 2;
-              else  if(!digitalRead(L2) | !digitalRead(L1)) 
+              else  if(!digitalRead(R1) & digitalRead(R2)) 
                         state = 3;
-                          else
-                            state = 0;
-    Serial.println("Next");
-    Serial.print(digitalRead(L2));
-    Serial.print(digitalRead(L1));
-    Serial.print(digitalRead(C));
-    Serial.print(digitalRead(R1));
-    Serial.print(digitalRead(R2));
-    
+                          else if (digitalRead(R1) & digitalRead(L1) & digitalRead(C))
+                            state = 0;  
+                                             
+    Serial.println(state);
     switch(state){
       case 0:
          brake(motor1,motor2);
-         Serial.println("Stop");
          count += 1;
          if (count == step_n)
              Serial.print("Finished"); 
          break;
       case 1:
          forward(motor1,motor2,dutyCycle);
-         Serial.println("Moving Forward");
          break;
       case 2:
-         right(motor2,motor1,dutyCycle);
-         Serial.println("Turning Right");
+         right(motor1,motor2,dutyCycle);
          break;
       case 3:
-         left(motor2,motor1,dutyCycle);
-         Serial.println("Turning Left");
+         left(motor1,motor2,dutyCycle);
          break; 
       default: break;     
     }
-    
 }
 
 void setup() {
@@ -98,16 +89,16 @@ void setup() {
   pinMode(near,INPUT);
   pinMode(clp,INPUT);
   Serial.begin(9600);
-  //Blynk.begin(auth, ssid, pass); 
-  timer.setInterval(50L,processor);
+  Blynk.begin(auth, ssid, pass); 
+  timer.setInterval(100L,processor);
 }
 
 void loop() {
-//  Serial.println("Hello my friends!!!");
-//  if ( !Blynk.connected() )
-//  {
-//  Serial.println("wait wat?");
-//  }
-  //Blynk.run();
+  Serial.println("Hello my friends!!!");
+  if ( !Blynk.connected() )
+  {
+  Serial.println("wait wat?");
+  }
+  Blynk.run();
   timer.run();
 }
