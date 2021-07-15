@@ -1,6 +1,6 @@
 #include "motor.h"
 #include <Arduino.h>
-const int freq = 2000;
+const int freq = 1000;
 const int ledChannel = 0;
 const int resolution = 8;
 

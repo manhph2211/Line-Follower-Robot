@@ -22,7 +22,7 @@
 #define R2 32 // S5
 #define C 25 // S3
 
-char auth[] = "2V_OEwpvftBfHdhCiHoQvc1nRV4nDuW6"; 
+char auth[] = "KOLz6MhYtf3-HApAMiDnevnkRJyGgNLy"; 
 char ssid[] = "Thanh Dat(5G)";  //Enter your WIFI Name
 char pass[] = "hm22112000";  //Enter your WIFI Password
 
@@ -33,7 +33,7 @@ Motor motor2 = Motor(BIN1, BIN2, enB);
 
 byte state = 1;// 0 : Stop , 1 : Forward, 2 : Right, 3 : Left
 int count = 0;
-int dutyCycle = 200;
+int dutyCycle = 150;
 int step_n = 3 ;
 /*
 BLYNK_WRITE(V1)
@@ -55,22 +55,21 @@ void processor(){
                 state = 2;
               else  if(!digitalRead(L2) | !digitalRead(L1)) 
                         state = 3;
-                          else
-                            state = 0;
-    Serial.println("Next");
-    Serial.print(digitalRead(L2));
-    Serial.print(digitalRead(L1));
-    Serial.print(digitalRead(C));
-    Serial.print(digitalRead(R1));
-    Serial.print(digitalRead(R2));
-    
+                          else if(!digitalRead(C) & !digitalRead(L2) & !digitalRead(L1) & !digitalRead(R1) & !digitalRead(R2))
+                                     {
+                                       count += 1;
+                                       if (count == step_n)
+                                         {    
+                                             state = 0; 
+                                             Serial.print("Finished");
+                                         }
+                                       else
+                                         state = 1;
+                                     }
     switch(state){
       case 0:
          brake(motor1,motor2);
          Serial.println("Stop");
-         count += 1;
-         if (count == step_n)
-             Serial.print("Finished"); 
          break;
       case 1:
          forward(motor1,motor2,dutyCycle);
@@ -99,15 +98,15 @@ void setup() {
   pinMode(clp,INPUT);
   Serial.begin(9600);
   //Blynk.begin(auth, ssid, pass); 
-  timer.setInterval(50L,processor);
+  timer.setInterval(80L,processor);
 }
 
 void loop() {
-//  Serial.println("Hello my friends!!!");
-//  if ( !Blynk.connected() )
-//  {
-//  Serial.println("wait wat?");
-//  }
+  Serial.println("Hello my friends!!!");
+  if ( !Blynk.connected() )
+  {
+  Serial.println("wait wat?");
+  }
   //Blynk.run();
   timer.run();
 }
