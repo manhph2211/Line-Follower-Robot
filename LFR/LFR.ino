@@ -104,6 +104,6 @@ void loop() {
   {
   Serial.println("wait wat?");
   }
-  //Blynk.run();
+  Blynk.run();
   timer.run();
 }
