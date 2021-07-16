@@ -59,7 +59,7 @@ void processor(){
                                 state = 3;
                                 last_state = state;
                                   else if(!digitalRead(C) & !digitalRead(L2) & !digitalRead(L1) & !digitalRead(R1) & !digitalRead(R2))
-                                             {
+                                             {   state = 0;
                                                  if (last_state != state)
                                                       {
                                                        count += 1;
