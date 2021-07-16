@@ -38,7 +38,7 @@ void Motor::rev(int speed)
 
 void Motor::brake()
 {
-   //ledcWrite(ledChannel, speed);
+   ledcWrite(ledChannel, speed);
    digitalWrite(In1,LOW);
    digitalWrite(In2,LOW);
 }
