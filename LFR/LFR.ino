@@ -94,7 +94,7 @@ void setup() {
   pinMode(R1, INPUT);
   pinMode(R2, INPUT);
   Serial.begin(9600);
-  //Blynk.begin(auth, ssid, pass); 
+  Blynk.begin(auth, ssid, pass); 
   timer.setInterval(20L,processor);
 }
 
