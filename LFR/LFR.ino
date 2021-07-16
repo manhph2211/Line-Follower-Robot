@@ -33,7 +33,7 @@ int count = 0;
 int dutyCycle = 120;
 int step_n = 3 ;
 int last_state  = 0;
-/*
+
 BLYNK_WRITE(V1)
 {
   dutyCycle = param.asInt(); 
@@ -45,26 +45,26 @@ BLYNK_WRITE(V2)
   step_n = param.asInt(); 
   Serial.println(step_n);
 }
-*/
+
 void processor(){
     if (count == step_n)
         brake(motor1,motor2);
             if(!digitalRead(C) & digitalRead(L2) & digitalRead(R2))
                 state = 1;
+                last_state = state;
               else  if((!digitalRead(R2) |!digitalRead(R1)) & digitalRead(L2)) 
                         state = 2;
+                        last_state = state;
                       else  if((!digitalRead(L2) | !digitalRead(L1)) & digitalRead(R2) ) 
                                 state = 3;
+                                last_state = state;
                                   else if(!digitalRead(C) & !digitalRead(L2) & !digitalRead(L1) & !digitalRead(R1) & !digitalRead(R2))
                                              {
                                                  if (last_state != state)
                                                       {
                                                        count += 1;
-                                                       state = 1;
-                                                      }
-                                                           else 
-                                                               last_state = state;
-                                                                         
+                                                       last_state = state;
+                                                      }                             
                                              }
     switch(state){
       case 0:
