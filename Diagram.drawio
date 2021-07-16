@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-07-16T05:25:53.559Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.67" etag="nDQwFKQn1cApvutiEd_H" version="14.8.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-07-16T05:43:39.193Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.67" etag="q7MChWiNpINJosIUFdK7" version="14.8.6" type="github">
   <diagram id="Ezy-y-FbjfAG1BCbXXI5" name="Page-1">
     <mxGraphModel dx="1865" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -28,7 +28,7 @@
         <mxCell id="G5f44dBYUgscpnxHCPcD-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="j_K-GDXODY1bReVwgwL4-4" target="j_K-GDXODY1bReVwgwL4-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="j_K-GDXODY1bReVwgwL4-4" value="S3 = 0&amp;nbsp;" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="j_K-GDXODY1bReVwgwL4-4" value="S3 = 0 and &lt;br&gt;S1 = S5 = 1" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-420" y="440" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="j_K-GDXODY1bReVwgwL4-5" value="Đi thẳng" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -46,7 +46,7 @@
         <mxCell id="G5f44dBYUgscpnxHCPcD-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="j_K-GDXODY1bReVwgwL4-10" target="j_K-GDXODY1bReVwgwL4-13" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="j_K-GDXODY1bReVwgwL4-10" value="S5 = 0 or S4 = 0" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="j_K-GDXODY1bReVwgwL4-10" value="S5 = 0 or S4 = 0 &lt;br&gt;and S1 = 1" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-420" y="550" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="j_K-GDXODY1bReVwgwL4-11" value="Rẽ phải" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -58,7 +58,7 @@
         <mxCell id="G5f44dBYUgscpnxHCPcD-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="j_K-GDXODY1bReVwgwL4-13" target="j_K-GDXODY1bReVwgwL4-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="j_K-GDXODY1bReVwgwL4-13" value="S1 = 0 or S2 = 0" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="j_K-GDXODY1bReVwgwL4-13" value="S1 = 0 or S2 = 0&lt;br&gt;and S5 = 1" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-420" y="660" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="j_K-GDXODY1bReVwgwL4-14" value="Rẽ trái" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
