@@ -32,7 +32,7 @@ byte state = 1;// 0 : Stop , 1 : Forward, 2 : Right, 3 : Left
 int count = 0;
 int dutyCycle = 120;
 int step_n = 3 ;
-int last_state  = 0;
+byte last_state  = 0;
 
 BLYNK_WRITE(V1)
 {
@@ -99,7 +99,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Hello my friends!!!");
+  Serial.println("Hello There!!!");
   if ( !Blynk.connected() )
   {
   Serial.println("wait wat?");
