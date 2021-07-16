@@ -1,6 +1,6 @@
 #include "motor.h"
 #include <Arduino.h>
-const int freq = 1000;
+const int freq = 1500;
 const int ledChannel = 0;
 const int resolution = 8;
 
@@ -70,7 +70,7 @@ void back(Motor motor1, Motor motor2)
 
 void left(Motor left, Motor right, int speed)
 {
-	int temp = abs(speed)/2;
+	int temp = abs(speed/2);
 	left.drive(-temp);
 	right.drive(temp);
 	
@@ -78,7 +78,7 @@ void left(Motor left, Motor right, int speed)
 
 void right(Motor left, Motor right, int speed)
 {
-	int temp = abs(speed)/2;
+	int temp = abs(speed/2);
 	left.drive(temp);
 	right.drive(-temp);
 }
